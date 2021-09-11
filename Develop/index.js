@@ -1,52 +1,44 @@
-var now = moment();
+var timeblockContainer = document.querySelector(".container");
+var timeblock;
+var userData;
+currentDate = moment().format( 'MMM Do YYYY' );
+currentTime = moment().format( 'HH' );
 
-$('#currentDay').text(now)
 
-
-/*
-.past-hour {
-    color: gray
-}
-
-.current-hour {
-    color: red
-}
-
-.future-hour {
-    color: green
-}
-*/
-
-function getTextBoxClass(hourid) {
-    if (hourid < now.hour()) {
-        return 'past-hour'
-    } 
-    if (hourid == now.hour()) {
-        return 'current-hour'
-    } 
-    return 'future-hour'
-}
-
-function hourRowElement(hourid) {
-    const hourText = moment().hour(hourid).format('h A')
-    const textBoxClass = getTextBoxClass(hourid);
-    return `<div class='time-block'>
-    <div>${hourText}</div>
-    <div><input type="text" id="userinput-${hourid}" class="${textBoxClass}"></div>
-    <div><button type="button" id="save-button-${hourid}">Save!</button></div>
-    </div>`
-}
-
-function saveButtonHandler(hourid) {
-    return function() {
-        localStorage.setItem(`${hourid}`, $(`#userinput-${hourid}`).val() );
+function dateTimeUpd(){
+    currentDay.innerHTML = currentDate;
+    for (let i = 8; i < 19; i++ ) {
+        const textElement = document.getElementById( 'block' + i.toString() );
+        if ( i < currentTime ) {
+            textElement.classList.add( "past" );
+        } else if ( i == currentTime ) {
+            textElement.classList.add( "present" );
+        } else {
+            textElement.classList.add( "future" );
+        }
     }
 }
 
-for (i = 9; i <= 17; i++) {
-    $('.container').append(hourRowElement(i));
-    $(`#save-button-${i}`).click(saveButtonHandler(i))
-    $(`#userinput-${i}`).val(localStorage.getItem(`${i}`))
+function saveCalendarEvent( event ) {
+    event.preventDefault();
+    var hrSaveBtn = event.target.getAttribute( 'data-hour' );
+    if ( hrSaveBtn != null && timeblock != undefined && userData != undefined ) {
+        const hrBtn = hrSaveBtn.substr( 1,2 );
+        const inputHr = timeblock.substr( 2,2 );
+        if ( hrBtn === inputHr ) {
+            localStorage.setItem( hrSaveBtn, userData );
+        } else {
+            window.alert( 'Nothing to add. Please add valid data and try again.' );
+        }
+    }
 }
 
+function userInput( event ) {
+    event.preventDefault();
+    timeblock = event.target.getAttribute( 'id' );
+    userData = document.getElementById( timeblock ).value;
+}
 
+timeblockContainer.addEventListener( 'click', saveCalendarEvent );
+addEventListener( 'change', userInput );
+dateTimeUpd();
