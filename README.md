@@ -25,3 +25,4 @@ As an employee with a busy schedule, I want to add important events to a daily p
 
 ## Application Links
 * Live App - https://cknig00q.github.io/day-calendar/
+* Github Repo - https://github.com/cknig00q/day-calendar
