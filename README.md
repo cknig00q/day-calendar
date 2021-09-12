@@ -20,5 +20,5 @@ As an employee with a busy schedule, I want to add important events to a daily p
 * Then the saved events persist
 
 ## Application Preview
-![Day Calendar, home](assets/images/day-cal-home.JPG)
-![Day Calendar, home-with color timeblocks](assets/images/day-cal-home-colorblocks.JPG)
+![Day Calendar, home](develop/assets/images/day-cal-home.JPG)
+![Day Calendar, home-with color timeblocks](develop/assets/images/day-cal-home-colorblocks.JPG)
