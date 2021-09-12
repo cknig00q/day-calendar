@@ -23,7 +23,7 @@ function saveCalendarEvent( event ) {
     event.preventDefault();
     var hrSaveBtn = event.target.getAttribute( 'data-hour' );
     if ( hrSaveBtn != null && timeblock != undefined && userData != undefined ) {
-        const hrBtn = hrSaveBtn.substr( 1,2 );
+        const hrBtn = hrSaveBtn.substr( 4,2 );
         const inputHr = timeblock.substr( 2,2 );
         if ( hrBtn === inputHr ) {
             localStorage.setItem( hrSaveBtn, userData );
@@ -39,6 +39,6 @@ function userInput( event ) {
     userData = document.getElementById( timeblock ).value;
 }
 
+dateTimeUpd();
 timeblockContainer.addEventListener( 'click', saveCalendarEvent );
 addEventListener( 'change', userInput );
-dateTimeUpd();
