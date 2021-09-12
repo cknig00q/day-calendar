@@ -1,8 +1,5 @@
 # day-calendar
-Simple day calendar application
-
-# day-calendar
-Simple work day calendar application.
+Simple work day calendar application that reflects typical work hours in the form of hourly timeblocks, from 8:00AM to 6:00PM. The application timeblocks are color coded based on past, present, or future time and have the capability to take user input text, input into the timeblock, and save/retrieve from local storage.
 
 ## User Story
 As an employee with a busy schedule, I want to add important events to a daily planner so that I can manage my time effectively.
@@ -21,3 +18,7 @@ As an employee with a busy schedule, I want to add important events to a daily p
 * Then the text for that event is saved in local storage
 * When I refresht the page
 * Then the saved events persist
+
+## Application Preview
+![Day Calendar, home](assets/images/day-cal-home.JPG)
+![Day Calendar, home-with color timeblocks](assets/images/day-cal-home-colorblocks.JPG)
